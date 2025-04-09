@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Lista from './Lista';
+import './App.css';
+import { useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const  [lista, setLista]= useState ([])
+  const [nuevoItem, setNuevoItem] = useState('');
+
+  const agregarItem = () => {
+    if (nuevoItem.trim() === '') return;
+    setLista ([...lista, nuevoItem]);
+    setNuevoItem('');
+
+  };
+
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="App">
+      <h1>Lista de de compras</h1>
+    <input
+    type="text"
+    placeholder='agregar item...'
+    value={nuevoItem}
+    onChange={(e) => setNuevoItem (e.target.value)}
 
-export default App
+    />
+    <button onClick={agregarItem}>Agregar</button>
+
+      <Lista lista={lista} />
+    </div>
+  );
+}
+export default App;
+// This code imports the Lista component and uses it to display a list of items.
+// The Lista component takes a prop called lista, which is an array of items.
+// It maps over the array and renders each item inside a div with the class "item".
+// The App component imports the Lista component and passes an array of items to it.
