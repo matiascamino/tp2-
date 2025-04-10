@@ -1,10 +1,14 @@
-function Lista ({ lista }) {
+import Item from './Item';
+
+function Lista({ lista , eliminarItem}) {
   return (
     <div className="lista">
       {lista.map((item, index) => (
-        <div key={index} className="item">
-          {item}
-        </div>
+        <Item
+          key={index}
+          texto={item}
+          onEliminar={() => eliminarItem(index)}
+        />
       ))}
     </div>
   );
