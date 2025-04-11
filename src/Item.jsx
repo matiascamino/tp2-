@@ -1,17 +1,21 @@
 function Item({ texto, 
     onEliminar,
-     onEditar,
+    onEditar,
     index,
+    onAumentar,
+    onDisminuir,
     editandoIndex,
     textoEditado,
-     setTextoEditado, 
-     onGuardar }) {
+    setTextoEditado, 
+    cantidad,
+    onGuardar }) {
 
        
         const isEditing = index === editandoIndex; // verifica si el item que estoy editando es el mismo que el que estoy editando en ese momento
 
     return (
     <div className="item">
+    
         {isEditing ? (
             <>
                 <input
@@ -28,7 +32,9 @@ function Item({ texto,
             </>
         ) : (
         <> 
-        {texto}
+        <span>{texto} - Cantidad: {cantidad}</span>
+        <button onClick={onDisminuir}>-</button>
+        <button onClick={onAumentar}>+</button>
         <button onClick={onEliminar}>Eliminar</button>
         <button onClick={onEditar}>Editar</button>
         </>

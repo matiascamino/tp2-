@@ -11,7 +11,7 @@ function App() {
 
   const agregarItem = () => {
     if (nuevoItem.trim() === '') return; // si el input esta vacio no hace nada, trim elimina los espacio lo cual evita que agregue elementos vacios 
-    setLista([...lista, nuevoItem]);// los '...' son spread operator y lo q hace es copiarlos, nuevoitem agrega1 el  nuevo item al final y crea un nuevo array y lo pasa a setlista
+    setLista([...lista, {texto:nuevoItem,cantidad:1}]);// los '...' son spread operator y lo q hace es copiarlos, nuevoitem agrega1 el  nuevo item al final y crea un nuevo array y lo pasa a setlista
     setNuevoItem('');// limpia el input
 
   };
@@ -24,21 +24,39 @@ function App() {
 
   const editarItem = (index) => {
     setEditandoIndex(index);// guardo el indece q estoy editando aviso que estoy editando un item en particular 
-    setTextoEditado(lista[index])// toma el texto actual de ese indice y luego lo puedo usar para rellenar un input 
-
+    setTextoEditado(lista[index].texto);// toma el texto actual de ese indice y luego lo puedo usar para rellenar un input 
+    
   };
 
   const guardarEdicion = (index) => {
     const nuevaLista = [...lista];
-    nuevaLista[index] = textoEditado;
+  nuevaLista[index] = {
+      ...nuevaLista[index],
+      texto: textoEditado,
+    };
     setLista(nuevaLista);
     setEditandoIndex(null);
     setTextoEditado('');
   };
+ 
+  const aumentarCantidad = (index) => {
+    const nuevaLista = [...lista];
+    nuevaLista[index].cantidad += 1;
+    setLista(nuevaLista);
+
+  };
+
+  const disminuirCantidad = (index) => {
+    const nuevaLista = [...lista];
+    if (nuevaLista[index].cantidad > 1) {
+      nuevaLista[index].cantidad -= 1;
+      setLista(nuevaLista);
+    }
+  };
 
   return (
     <div className="App">
-      <h1>Lista de de compras</h1>
+      <h1>Lista de  compras:</h1>
 
       <input
         type="text"
@@ -63,6 +81,9 @@ function App() {
       textoEditado={textoEditado}
       setTextoEditado={setTextoEditado}
       editandoIndex={editandoIndex}// le paso las funciones a la componente lista para q las pueda usar y tambien sus hijos 
+      aumentarCantidad={aumentarCantidad}
+      disminuirCantidad={disminuirCantidad} // le paso la funcion de aumentar y disminuir cantidad
+      
       />
     </div>
   );

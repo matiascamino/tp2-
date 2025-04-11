@@ -1,10 +1,15 @@
 import Item from './Item';
 
-function Lista({ lista , eliminarItem, editarItem,
+function Lista({ 
+  lista ,
+  eliminarItem,
+  editarItem,
   guardarEdicion,
   textoEditado,
   setTextoEditado,
   editandoIndex,
+  aumentarCantidad,
+  disminuirCantidad
 
 }) {
   return (
@@ -13,13 +18,16 @@ function Lista({ lista , eliminarItem, editarItem,
         <Item
           key={index}
           index={index}
-          texto={item}
+          texto={item.texto}
+          cantidad={item.cantidad}
           onEliminar={() => eliminarItem(index)}
           onEditar={() => editarItem(index)}
           onGuardar={() => guardarEdicion(index)}
           editandoIndex={editandoIndex}
           textoEditado={textoEditado}
           setTextoEditado={setTextoEditado}
+          onAumentar={() => aumentarCantidad(index)}
+          onDisminuir={() => disminuirCantidad(index)}
         />
       ))}
     </div>
