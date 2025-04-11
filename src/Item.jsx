@@ -32,11 +32,12 @@ function Item({ texto,
             </>
         ) : (
         <> 
-        <span>{texto} - Cantidad: {cantidad}</span>
-        <button onClick={onDisminuir}>-</button>
-        <button onClick={onAumentar}>+</button>
-        <button onClick={onEliminar}>Eliminar</button>
-        <button onClick={onEditar}>Editar</button>
+        <span className="item-texto">{texto}</span>
+        <span className="cantidad">x{cantidad}</span>
+        <button className="botonCantidadMenos" onClick={onDisminuir}>-</button>
+        <button className="botonCantidadMas" onClick={onAumentar}>+</button>
+        <button className="eliminar" onClick={onEliminar}>Eliminar</button>
+        <button className= "editar"onClick={onEditar}>Editar</button>
         </>
     )}
     </div>

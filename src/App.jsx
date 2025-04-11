@@ -58,7 +58,7 @@ function App() {
     <div className="App">
       <h1>Lista de  compras:</h1>
 
-      <input
+      <input 
         type="text"
         placeholder='agregar item...'
         value={nuevoItem}
