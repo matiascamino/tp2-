@@ -8,9 +8,10 @@ function Lista({
   textoEditado,
   setTextoEditado,
   editandoIndex,
-  aumentarCantidad,
-  disminuirCantidad
-
+  cambiarCantidad,
+  cantidadEditada,
+  setCantidadEditada,
+ 
 }) {
   return (
     <div className="lista">
@@ -19,15 +20,18 @@ function Lista({
           key={index}
           index={index}
           texto={item.texto}
-          cantidad={item.cantidad}
+         cantidad={item.cantidad}
           onEliminar={() => eliminarItem(index)}
           onEditar={() => editarItem(index)}
           onGuardar={() => guardarEdicion(index)}
           editandoIndex={editandoIndex}
           textoEditado={textoEditado}
           setTextoEditado={setTextoEditado}
-          onAumentar={() => aumentarCantidad(index)}
-          onDisminuir={() => disminuirCantidad(index)}
+          cantidadEditada={cantidadEditada}
+          setCantidadEditada={setCantidadEditada}
+          
+          
+           onCambiarCantidad={(nuevaCantidad) => cambiarCantidad(index, nuevaCantidad)}
         />
       ))}
     </div>

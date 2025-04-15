@@ -27,17 +27,21 @@ h2 {
   margin-right: 5px;
 }
 
-.cantidad{
-background-color: #1f2937;
-color: #fff;
-padding: 5px 10px;
-border-radius: 8px;
-font-weight: bold;
-font-size: 0.9em;
-display: inline-block;
-text-align: center;
-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+.input-cantidad {
+  width: 50px;
+  padding: 4px;
+  border-radius: 6px;
+  border: none;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.95em;
+  background-color: #1f2937;
+  color: white;
 }
+.input-cantidad:focus {
+  outline: 2px solid #3b82f6;
+}
+
 
 button {
   background-color: #448aff;
@@ -52,21 +56,13 @@ button {
 }
 
 
-.botonCantidadMenos {
-  background-color: #ff5252;
-  margin: 10px 3px;
-
-}
 
 .eliminar {
   background-color: #e53935;
   margin: 10px 3px;
 }
 
-.botonCantidadMas {
-  background-color: #69f0ae;
-  margin: 10px 3px;
-}
+
 
 .editar {
 
